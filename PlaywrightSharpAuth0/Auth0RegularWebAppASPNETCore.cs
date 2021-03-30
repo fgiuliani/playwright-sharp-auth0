@@ -16,6 +16,12 @@ namespace PlaywrightSharpAuth0
             var page = await browser.NewPageAsync();
             await page.GoToAsync("https://auth0.com/");
 
+            // Click on the cookie policy acceptance button if it exists
+            if ((await page.QuerySelectorAsync("#truste-consent-button")) != null)
+            {
+                await page.ClickAsync("#truste-consent-button");
+            }
+
             // Hover on Developers
             await page.HoverAsync("li[aria-labelledby='nav-item-Developers']");
 
